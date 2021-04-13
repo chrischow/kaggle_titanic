@@ -52,8 +52,6 @@ Having completed the tuning for the above models, I discovered another source of
 3. Evaluate results for all **meta folds**
   
 The first important thing I learned was that although feature selection and parameter tuning require cross validation, **all processes from data cleaning to feature generation to feature selection to hyperparameter tuning** require cross validation as well. In other words, **cross validation should be used to validate the full approach**. My mistake was that I saw hyperparameter tuning with cross validation as the end stage of testing. This was wrong. The second important thing I learned was that it was better to place feature selection before hyperparameter tuning. This is because changes in hyperparameter levels do not change how important or unimportant the features are. We only need the initial parameters for running RFE to not prevent the algorithm from letting the important features surface. For example, in tree-based models, increasing the number of trees, depth, or features sampled per tree would help to ensure that sufficient features are evaluated. The tradeoff to increasing these hyperparameters would be the computational cost. These two objectives should be balanced well.  
-  
-### Model Tuning II - Cross-validating the Entire Pipeline
 
   
   
